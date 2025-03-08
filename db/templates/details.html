@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Index{% endblock %}
+{% block content %}
+
+<div style="display:flex; justify-content: center;">
+    <h1>Todo {{todo.pid}} </h1>
+</div>
+
+<div>
+    <p style="display: flex; justify-content: center;">Name: {{todo.name}} </p>
+    <p style="display: flex; justify-content: center;">Work: {{todo.work}} </p>
+</div>
+
+
+{% endblock %}
