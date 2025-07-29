@@ -1,35 +1,35 @@
 <body>
+  {% extends 'base.html' %} {% block title %}Index{% endblock %} {% block
+  content %}
+  <h1 style="display: flex; justify-content: center">TODO LIST APPLICATION</h1>
+  <h3 style="display: flex; justify-content: center">Create the lists here</h3>
+  <div class="create_list" style="display: flex; justify-content: center">
+    <form action=" {{url_for('index')}} " method="post">
+      <input
+        type="text"
+        name="name"
+        placeholder="Name"
+        required="required"
+      /><br />
+      <input type="text" name="work" placeholder="Work" /><br />
+      <input type="submit" value="Create" />
+    </form>
+  </div>
 
+  <h3 style="display: flex; justify-content: center">Todo List</h3>
+  <div class="work_list" style="display: flex; justify-content: center">
+    <ul>
+      {% for todo in todoList %}
+      <li>
+        {{todo}}
+        <a href="{{url_for('delete',pid=todo.pid)}}">
+          <button>Delete</button>
+        </a>
+        <a href=" {{url_for('details',pid=todo.pid)}} ">Details</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 
-    {% extends 'base.html' %}
-    {% block title %}Index{% endblock %}
-    {% block content %}
-    <h1 style="display: flex; justify-content: center;">TODO LIST APPLICATION</h1>
-    <h3 style="display: flex; justify-content: center;">Create the lists here</h3>
-    <div class="create_list" style="display: flex; justify-content: center;">
-        <form action=" {{url_for('index')}} " method="post">
-
-            <input type="text" name="name" placeholder="Name" required="required"><br>
-            <input type="text" name="work" placeholder="Work"><br>
-            <input type="submit" value="Create">
-
-        </form>
-    </div>
-
-    <h3 style="display: flex; justify-content: center;">Todo List</h3>
-    <div class="work_list" style="display: flex; justify-content: center;">
-        <ul>
-            {% for todo in todoList %}
-            <li> {{todo}} <a href="{{url_for('delete',pid=todo.pid)}}"> <button> Delete </button> </a> <a
-                    href=" {{url_for('details',pid=todo.pid)}} ">Details</a> </li>
-            {% endfor %}
-        </ul>
-    </div>
-
-
-
-
-
-    {% endblock %}
-
+  {% endblock %}
 </body>
